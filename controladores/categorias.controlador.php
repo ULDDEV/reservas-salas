@@ -2,7 +2,7 @@
 
 class ControladorCategorias
 {
-    /* Mostrar Banner */
+    /* Mostrar Categorias */
     static public function ctrMostrarCategorias()
     {
 

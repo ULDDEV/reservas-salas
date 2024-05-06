@@ -2,7 +2,7 @@
 
 class ControladorPlanes
 {
-    /* Mostrar Banner */
+    /* Mostrar Planes */
     static public function ctrMostrarPlanes()
     {
 

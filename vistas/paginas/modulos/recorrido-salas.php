@@ -15,7 +15,7 @@ RECORRIDO POR LA SALA
 
 	<div class="container">
 
-		<h1 class="pt-5 text-center">RECORRIDO LA SALA</h1>
+		<h1 class="pt-5 text-center">RECORRIDO POR LAS SALA</h1>
 
 		<div class="jd-slider slidePueblo">
 

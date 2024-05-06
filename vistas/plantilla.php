@@ -98,20 +98,24 @@ $servidor = ControladorRuta::ctrServidor();
 	include "paginas/modulos/header.php";
 
 	/*=============================================
-		  PÁGINAS
-		  =============================================*/
+										   PÁGINAS
+			   =============================================*/
 
 	if (isset($_GET["pagina"])) {
+		$rutasCategorias = ControladorCategorias::ctrMostrarCategorias();
 
-		if ($_GET["pagina"] == "habitaciones") {
+		foreach ($rutasCategorias as $key => $value) {
 
-			include "paginas/habitaciones.php";
+			if ($_GET["pagina"] == $value["ruta"]) {
 
+				include "paginas/salas.php";
+
+			}
 		}
 
-		if ($_GET["pagina"] == "reservas") {
+		if ($_GET["pagina"] == "reservas" || $_GET["pagina"] == "perfil") {
 
-			include "paginas/reservas.php";
+			include "paginas/" . $_GET["pagina"] . ".php";
 
 		}
 
@@ -129,8 +133,8 @@ $servidor = ControladorRuta::ctrServidor();
 
 
 	/*=============================================
-		  PÁGINAS
-		  =============================================*/
+										   PÁGINAS
+			   =============================================*/
 
 
 	include "paginas/modulos/footer.php";
@@ -139,9 +143,13 @@ $servidor = ControladorRuta::ctrServidor();
 
 	?>
 
+	<input type="hidden" value="<?php echo $ruta; ?>" id="urlPrincipal">
+	<input type="hidden" value="<?php echo $servidor; ?>" id="urlServidor">
+
 	<script src="js/plantilla.js"></script>
 	<script src="js/menu.js"></script>
 	<script src="js/idiomas.js"></script>
+	<script src="js/salas.js"></script>
 	<script src="js/reservas.js"></script>
 
 </body>

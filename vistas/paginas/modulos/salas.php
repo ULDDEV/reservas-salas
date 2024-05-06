@@ -7,7 +7,7 @@ print_r($categorias);
 ?>
 
 <!--=====================================
-HABITACIONES
+SALAS
 ======================================-->
 
 <div class="habitaciones container-fluid bg-light" id="habitaciones">

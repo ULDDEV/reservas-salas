@@ -3,7 +3,7 @@ require_once "conexion.php";
 
 class ModeloCategorias
 {
-    /* Mostrar Banner */
+    /* Mostrar Categorias */
 
     static public function mdlMostrarCategorias($tabla)
     {

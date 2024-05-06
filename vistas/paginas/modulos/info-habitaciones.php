@@ -1,3 +1,12 @@
+<?php
+$valor = $_GET["pagina"];
+$salas = ControladorSalas::ctrMostrarSalas($valor);
+/* echo '<pre class="bg-white">';
+print_r($salas);
+'</pre>';
+*/
+?>
+
 <!--=====================================
 INFO HABITACIÓN
 ======================================-->
@@ -24,50 +33,31 @@ INFO HABITACIÓN
 						<h5><i class="fas fa-chevron-left"></i> Regresar</h5>
 					</a>
 
-					<h2 class="float-right text-white px-3 categoria">SUITE</h2>
+					<h2 class="float-right text-white px-3 categoria text-uppercase"><?php echo $salas[1]["tipo"]; ?>
+					</h2>
 
 					<div class="clearfix"></div>
 
 					<ul class="nav nav-justified mt-lg-4">
 
-						<li class="nav-item">
+						<?php foreach ($salas as $key => $value): ?>
 
-							<a class="nav-link text-white active" href="#">
-								<i class="fas fa-chevron-right"></i> Oriental
-							</a>
+							<li class="nav-item">
+								<a class="nav-link text-white" orden="<?php echo $key; ?>"
+									ruta="<?php echo $_GET["pagina"]; ?>" href="#">
 
-						</li>
+									<?php echo $value["estilo"]; ?>
+								</a>
+							</li>
 
-						<li class="nav-item">
-
-							<a class="nav-link text-white" href="#">Moderna</a>
-
-						</li>
-
-						<li class="nav-item">
-
-							<a class="nav-link text-white" href="#">Africana</a>
-
-						</li>
-
-						<li class="nav-item">
-
-							<a class="nav-link text-white" href="#">Clásica</a>
-
-						</li>
-
-						<li class="nav-item">
-
-							<a class="nav-link text-white" href="#">Retro</a>
-
-						</li>
+						<?php endforeach ?>
 
 					</ul>
 
 				</div>
 
 				<!--=====================================
-				MULTIMEDIA HABITACIONES
+				MULTIMEDIA SALAS
 				======================================-->
 
 				<!-- SLIDE  -->
@@ -78,23 +68,23 @@ INFO HABITACIÓN
 
 						<ul class="slide-area">
 
-							<li>
 
-								<img src="img/oriental.png" class="img-fluid">
+							<?php
 
-							</li>
+							$galeria = json_decode($salas[1]["galeria"], true);
 
-							<li>
+							?>
 
-								<img src="img/oriental.png" class="img-fluid">
 
-							</li>
+							<?php foreach ($galeria as $key => $value): ?>
 
-							<li>
+								<li>
 
-								<img src="img/oriental.png" class="img-fluid">
+									<img src="<?php echo $servidor . $value; ?>" class="img-fluid">
 
-							</li>
+								</li>
+
+							<?php endforeach ?>
 
 						</ul>
 
@@ -120,7 +110,8 @@ INFO HABITACIÓN
 
 				<section class="mb-3 my-lg-3 videoHabitaciones d-none">
 
-					<iframe width="100%" height="380" src="https://www.youtube.com/embed/JTu790_yyRc" frameborder="0"
+					<iframe width="100%" height="380"
+						src="https://www.youtube.com/embed/<?php echo $salas[1]["video"]; ?>" frameborder="0"
 						allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
 						allowfullscreen></iframe>
 
@@ -130,7 +121,7 @@ INFO HABITACIÓN
 
 				<section class="mb-3 my-lg-3 360Habitaciones d-none">
 
-					<div id="myPano" class="pano">
+					<div id="myPano" class="pano" back="<?php $servidor . $salas[1]["recorrido_virtual"]; ?>">
 
 						<div class="controls">
 							<a href="#" class="left">&laquo;</a>
@@ -147,7 +138,9 @@ INFO HABITACIÓN
 
 				<div class="descripcionHabitacion px-3">
 
-					<h1 class="colorTitulos float-left">ORIENTAL SUITE</h1>
+					<h1 class="colorTitulos float-left text-uppercase">
+						<?php echo $salas[1]["estilo"] . " " . $salas[1]["tipo"]; ?>
+					</h1>
 
 					<div class="float-right pt-2">
 
@@ -164,40 +157,13 @@ INFO HABITACIÓN
 
 					<div class="clearfix mb-4"></div>
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit, quia blanditiis fugiat nam
-						libero possimus totam modi sint autem repellat fugit dicta est pariatur? Ut aut vel ad sapiente.
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, reprehenderit! Deserunt
-						laborum dolorum deleniti molestiae quae vitae animi ratione nihil, minus ut quibusdam incidunt
-						voluptate eos sed id repudiandae ex.
-					</p>
+					<div class="d-salas">
 
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum sit, quia blanditiis fugiat nam
-						libero possimus totam modi sint autem repellat fugit dicta est pariatur? Ut aut vel ad sapiente.
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae, reprehenderit! Deserunt
-						laborum dolorum deleniti molestiae quae vitae animi ratione nihil, minus ut quibusdam incidunt
-						voluptate eos sed id repudiandae ex.
-					</p>
 
-					<br>
+						<?php echo $salas[1]["descripcion_s"]; ?>
 
-					<h3>PLAN CONTINENTAL</h3>
 
-					<p>(Precio x pareja 1 día 1 noche, incluye: desayuno)<br>
-						Temporada Baja:$300 USD<br>
-						Temporada Alta $350 USD</p>
-
-					<br>
-
-					<h3>PLAN AMERICANO</h3>
-
-					<p>(Precio x pareja 1 día 1 noche, incluye: cena, desayuno, almuerzo)<br>
-						Temporada Baja:$380 USD<br>
-						Temporada Alta $420 USD</p>
-
-					<br>
-
-					<p>Hora de entrada (Check in) 3:00 pm | Hora de salida (Check out) 1:00 pm</p>
-
+					</div>
 					<div class="container">
 
 						<div class="row py-2" style="background:#509CC3">
