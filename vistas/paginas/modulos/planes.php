@@ -13,7 +13,7 @@ PLANES
 
 			<div class="grid-item">
 
-				<h1 class="text-center py-3 py-lg-5 tituloPlan" tituloPlan="BIENVENIDO">BIENVENIDO</h1>
+				<h1 class="text-center py-3 py-lg-5 tituloPlan text-uppercase" tituloPlan="BIENVENIDO">BIENVENIDO</h1>
 
 				<p class="text-muted text-left px-4 descripcionPlan"
 					descripcionPlan="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure deleniti quidem minus voluptatibus repellendus error, excepturi quam, iste vitae tenetur fugiat possimus in. In iure cum facilis, saepe, libero accusantium.">
