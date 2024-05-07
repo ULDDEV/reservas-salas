@@ -98,17 +98,19 @@ $servidor = ControladorRuta::ctrServidor();
 	include "paginas/modulos/header.php";
 
 	/*=============================================
-										   PÁGINAS
-			   =============================================*/
+															 PÁGINAS
+								 =============================================*/
 
 	if (isset($_GET["pagina"])) {
 		$rutasCategorias = ControladorCategorias::ctrMostrarCategorias();
+		$validarRuta = "";
 
 		foreach ($rutasCategorias as $key => $value) {
 
 			if ($_GET["pagina"] == $value["ruta"]) {
 
 				include "paginas/salas.php";
+				$validarRuta = "salas";
 
 			}
 		}
@@ -117,6 +119,15 @@ $servidor = ControladorRuta::ctrServidor();
 
 			include "paginas/" . $_GET["pagina"] . ".php";
 
+		} else if ($validarRuta != "") {
+			include "paginas/salas.php";
+
+		} else {
+			echo '<script>
+			
+			window.location = "' . $ruta . '"
+			
+			</script>';
 		}
 
 		if ($_GET["pagina"] == "perfil") {
@@ -133,8 +144,8 @@ $servidor = ControladorRuta::ctrServidor();
 
 
 	/*=============================================
-										   PÁGINAS
-			   =============================================*/
+															 PÁGINAS
+								 =============================================*/
 
 
 	include "paginas/modulos/footer.php";
